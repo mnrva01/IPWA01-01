@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <title>Zusammenfassung</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="icon" type="image/icon" href="/images/wsFavicon.png">
+    </head>
+
+    
+
+    <body class="d-flex flex-column min-vh-100">
+        <div class="container">
+            <header class="bg-light d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">
+                    <a href="index.html" class="text-decoration-none text-dark">
+                        WaermeSpenden
+                    </a>
+                </h1>
+                <nav>
+                    <ul class="list-unstyled d-flex align-items-center">
+                        <li class="me-4"> <a href="ueberUns.html">Über uns</a> </li>
+                        <li class="me-4"> <a href="https://instagram.com">Instagram</a> </li>
+                        <li class="me-4"> <a href="spendenformular.html"> Zum Spendenformular</a> </li>
+                        <li><a href="index.html"><img src="/images/wsLogo.png" alt="Logo" height="50"></a></li>
+                    </ul>
+                </nav>     
+            </header>
+        </div>
+
+        
+
+    <main class="flex-grow-1">
+        <div class="container my-5">
+            <h1>Zusammenfassung Ihrer Spende</h1>
+
+            <p> Bitte überprüfen Sie Ihre Angaben, bevor Sie die Spende bestätigen. </p>
+
+            <h2 class="h4 mt-4">Persönliche Daten</h2>
+
+            <p>Vorname: <span id="vorname"></span></p>
+            <p>Name: <span id="name"></span></p>
+            <p>E-Mail-Adresse: <span id="email"></span></p>
+
+            <h2 class="h4 mt-4">Spende</h2>
+
+            <p>Übergabe: <span id="abgabe"></span></p>
+            <p>Kleidungsarten: <span id="kleidung"></span></p>
+            <p>Krisengebiet: <span id="krisengebiet"></span></p>
+
+            <div id="abholadresse">
+
+                <h2 class="h4 mt-4">Abholadresse</h2>
+
+                <p>Straße und Hausnummer: <span id="strasse"></span></p>
+                <p>PLZ: <span id="plz"></span></p>
+                <p>Ort: <span id="ort"></span></p>
+                <p>Datum: <span id="datum"></span></p>
+                <p>Uhrzeit: <span id="uhrzeit"></span></p>
+
+            </div>
+
+            <div id="hinweisGeschaeftsstelle" class="alert alert-info mt-4">
+                Sie haben sich für eine Übergabe an der Geschäftsstelle entschieden. 
+                Auf einem unserer dort zur Verfügung stehenden Tablets können Sie ihre Spende abschließen. 
+                Genaue Anweisungen stehen dort zur Verfügung.              
+            </div>
+
+            <div class="mt-4">
+                <button type="button" id="bestaetigen"> Spende bestätigen</button>
+             </div>
+
+        </div>
+
+    </main>
+
+        <footer class="bg-light border-top py-3 mt-auto">
+        <div class="container">
+            <nav>
+                <ul class="list-unstyled d-flex justify-content-end mb-0">
+                    <li class="ms-3"><a href="kontakt.html" class="text-decoration-none">Kontakt</a></li>
+                    <li class="ms-3"><a href="datenschutz.html" class="text-decoration-none">Datenschutz</a></li>
+                    <li class="ms-3"><a href="impressum.html" class="text-decoration-none">Impressum</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        const spendenDaten = JSON.parse(
+            localStorage.getItem("spendenDaten")
+        );
+
+        console.log(spendenDaten);
+
+        document.getElementById("vorname").textContent = spendenDaten.vorname;
+        document.getElementById("name").textContent = spendenDaten.name;
+        document.getElementById("email").textContent = spendenDaten.email;
+
+        if (spendenDaten.abgabe === "abholung") {
+            document.getElementById("abgabe").textContent = "Abholung";
+        } else {
+            document.getElementById("abgabe").textContent = "Übergabe in der Geschäftsstelle"
+        }
+
+        document.getElementById("kleidung").textContent = spendenDaten.kleidung.join(", ");
+        document.getElementById("krisengebiet").textContent = spendenDaten.krisengebiet;
+
+        document.getElementById("abholadresse").style.display = "none";
+        document.getElementById("hinweisGeschaeftsstelle").style.display = "none";
+
+        if (spendenDaten.abgabe === "abholung") {
+            document.getElementById("abholadresse").style.display = "block";
+
+            document.getElementById("strasse").textContent = spendenDaten.strasse;
+            document.getElementById("plz").textContent = spendenDaten.plz;
+            document.getElementById("ort").textContent = spendenDaten.ort;
+            document.getElementById("datum").textContent = spendenDaten.datum;
+            document.getElementById("uhrzeit").textContent = spendenDaten.uhrzeit;
+        } else {
+            document.getElementById("hinweisGeschaeftsstelle").style.display = "block";
+        }
+
+        document.getElementById("bestaetigen").addEventListener("click", function() {
+            window.location.href = "danke.html"
+        });
+
+    </script>
+
+    </body>
+</html>

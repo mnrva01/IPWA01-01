@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+
+ <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <title>Abholadresse</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="icon" type="image/icon" href="/images/wsFavicon.png">
+    </head>
+
+    <body class="d-flex flex-column min-vh-100">
+        <div class="container">
+            <header class="bg-light d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">
+                    <a href="index.html" class="text-decoration-none text-dark">
+                        WaermeSpenden
+                    </a>
+                </h1>
+                <nav>
+                    <ul class="list-unstyled d-flex align-items-center">
+                        <li class="me-4"> <a href="ueberUns.html">Über uns</a> </li>
+                        <li class="me-4"> <a href="https://instagram.com">Instagram</a> </li>
+                        <li class="me-4"> <a href="spendenformular.html"> Zum Spendenformular</a> </li>
+                        <li><a href="index.html"><img src="/images/wsLogo.png" alt="Logo" height="50"></a></li>
+                    </ul>
+                </nav>     
+            </header>
+        </div>
+
+        <main class="flex-grow-1">
+
+        <div class="container my-5">
+            <div class="mb-3">
+                <h1>Abholadresse</h1>
+                <p class="mb-3">Sie haben sich für eine Abholung entschieden. Bitte geben Sie Ihre Abholadresse ein.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <form id="abholadresseForm">
+
+                <div class="mb-3">
+                    <label class="form-label" for="strasse">Straße und Hausnummer: </label>
+                    <input type="text" class="form-control" id="strasse" placeholder="Straße, Hausnummer" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="plz">PLZ:</label>
+                    <input type="text" class="form-control" id="plz" maxlength="5" placeholder="PLZ" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="ort">Ort:</label>
+                    <input type="text" class="form-control" id="ort" placeholder="Ort" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="datum">Datum:</label>
+                    <input type="date" id="datum" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="uhrzeit">Uhrzeit:</label>
+                    <input type="time" id="uhrzeit" required>
+                </div>
+
+                 <div class="mb-3">
+                    <input type="submit" value="Weiter">
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-light border-top py-3 mt-auto">
+        <div class="container">
+            <nav>
+                <ul class="list-unstyled d-flex justify-content-end mb-0">
+                    <li class="ms-3"><a href="kontakt.html" class="text-decoration-none">Kontakt</a></li>
+                    <li class="ms-3"><a href="datenschutz.html" class="text-decoration-none">Datenschutz</a></li>
+                    <li class="ms-3"><a href="impressum.html" class="text-decoration-none">Impressum</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        const formular = document.getElementById("abholadresseForm");
+
+        formular.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const plz = document.getElementById("plz").value;
+
+            const geschaeftsstellenPLZ = "49123";
+
+            if (!/^[0-9]{5}$/.test(plz)) {
+                alert("Bitte geben Sie eine gültige fünfstellige Postleitzahl ein!");
+                return;
+            }
+
+            if (plz.substring(0, 2) !== geschaeftsstellenPLZ.substring(0, 2)) {
+                alert("Die Abholadresse liegt nicht innerhalb des Abholbereichs.");
+                return;
+            }
+
+            const spendenDaten = JSON.parse(
+                localStorage.getItem("spendenDaten")
+            );
+
+            spendenDaten.strasse = document.getElementById("strasse").value;
+            spendenDaten.plz = plz;
+            spendenDaten.ort = document.getElementById("ort").value;
+            spendenDaten.datum = document.getElementById("datum").value;
+            spendenDaten.uhrzeit = document.getElementById("uhrzeit").value;
+
+            localStorage.setItem(
+                "spendenDaten",
+                JSON.stringify(spendenDaten)
+            );
+
+            window.location.href = "zusammenfassung.html"; 
+        });
+        
+    </script>
+
+
+</body>
+</html>

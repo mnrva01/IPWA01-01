@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <title>Spendenformular WaermeSpenden</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="icon" type="image/icon" href="/images/wsFavicon.png">
+    </head>
+
+    
+
+    <body class="d-flex flex-column min-vh-100">
+        <div class="container">
+            <header class="bg-light d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">
+                    <a href="index.html" class="text-decoration-none text-dark">
+                        WaermeSpenden
+                    </a>
+                </h1>
+                <nav>
+                    <ul class="list-unstyled d-flex align-items-center">
+                        <li class="me-4"> <a href="ueberUns.html">Über uns</a> </li>
+                        <li class="me-4"> <a href="https://instagram.com">Instagram</a> </li>
+                        <li class="me-4"> <a href="spendenformular.html"> Zum Spendenformular</a> </li>
+                        <li><a href="index.html"><img src="/images/wsLogo.png" alt="Logo" height="50"></a></li>
+                    </ul>
+                </nav>     
+            </header>
+        </div>
+
+        <main class="flex-grow-1">
+
+        <div class="container my-5">
+            <div class="mb-3">
+                <h1>Spendenformular</h1>
+                <p class="mb-3">Vielen Dank, dass Sie sich für eine Spende entschieden haben. Füllen Sie das nachfolgende Formular aus, um die Spende zu registrieren 
+                                und damit die Welt ein kleines Stück freundlicher zu machen.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <form id="spendenFormular">
+
+                <div class="row mb-3 align-items-center">
+                    <label class="col-sm-4 col-form-label" for="vname">Vorname</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="vname" placeholder="Vorname">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="name">Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="name" placeholder="Nachname">
+                    </div>
+                 </div>
+
+                 <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="email">eMail-Adresse</label>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control" id="email" placeholder="max.mustermann@email.com">
+                    </div>
+                 </div>
+
+                 <div class="row mb-3">
+
+                     <label class="col-sm-4 col-form-label">Wie möchten Sie Ihre Spende übergeben?</label>
+                        <div class="col-sm-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="abgabe" id="geschaeftsstelle" value="geschaeftsstelle">
+                                <label class="form-check-label" for="geschaeftsstelle">Übergabe an der Geschäftsstelle</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="abgabe" id="abholung" value="abholung">
+                                <label class="form-check-label" for="abholung">Abholung von Zuhause</label>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-4">
+                        <label class="form-label">Bitte kreuzen Sie eine oder mehrere Arten der Kleidungsstücke an, die Sie spenden möchten</label>
+                    </div>
+
+                    <div class="col-sm-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="jacken" name="kleidungsart" value="Jacken">
+                            <label class="form-check-label" for="jacken">Jacken</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="hosen" name="kleidungsart" value="Hosen">
+                            <label class="form-check-label" for="hosen">Hosen</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="oberteile" name="kleidungsart" value="Oberteile">
+                            <label class="form-check-label" for="oberteile">Oberteile</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="schuhe" name="kleidungsart" value="Schuhe">
+                            <label class="form-check-label" for="schuhe">Schuhe</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="schals" name="kleidungsart" value="Schals/Mützen">
+                            <label class="form-check-label" for="schals">Schals/Mützen</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <label class="col-sm-4 col-form-label" for="krisengebiet">Bitte wählen Sie, an welches Krisengebiet Sie spenden möchten</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" id="krisengebiet" name="krisengebiet">
+                                <option value="Ukraine">Ukraine</option>
+                                <option value="Sudan">Sudan</option>
+                                <option value="Gaza">Gaza</option>
+                                <option value="Afghanistan">Afghanistan</option>
+                            </select>
+                        </div>
+                </div>
+
+                <div class="mb-3">
+                    <input type="submit" value="Weiter">
+                </div>
+
+            </form>
+        </div>
+        </main>
+
+        <footer class="bg-light border-top py-3 mt-auto">
+        <div class="container">
+            <nav>
+                <ul class="list-unstyled d-flex justify-content-end mb-0">
+                    <li class="ms-3"><a href="kontakt.html" class="text-decoration-none">Kontakt</a></li>
+                    <li class="ms-3"><a href="datenschutz.html" class="text-decoration-none">Datenschutz</a></li>
+                    <li class="ms-3"><a href="impressum.html" class="text-decoration-none">Impressum</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+         <script>
+            const formular = document.getElementById("spendenFormular");
+
+            formular.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const abgabe = document.querySelector('input[name="abgabe"]:checked');
+
+                if (!abgabe) {
+                    alert("Bitte wählen Sie einen Abgabeort aus.");
+                    return;
+                }
+                
+                const kleidung = document.querySelectorAll(
+                    'input[name="kleidungsart"]:checked'
+                );
+
+                if(kleidung.length === 0) {
+                    alert("Bitte wählen Sie mindestens eine Kleidungsart aus.")
+                    return;
+                }
+
+                const kleidungsarten = [];
+
+                kleidung.forEach(function(item) {
+                    kleidungsarten.push(item.value);
+                });
+
+                const spendenDaten = {
+                    vorname: document.getElementById("vname").value,
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    abgabe: abgabe.value,
+                    kleidung: kleidungsarten,
+                    krisengebiet: document.getElementById("krisengebiet").value
+                };
+
+                localStorage.setItem(
+                    "spendenDaten",
+                    JSON.stringify(spendenDaten)
+                );
+
+                if (abgabe.value === "abholung") {
+                    window.location.href = "abholadresse.html";
+                } else {
+                    window.location.href = "zusammenfassung.html"
+                }
+            });
+
+            </script> 
+
+        
+
+    </body>
+</html>
